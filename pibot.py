@@ -45,9 +45,14 @@ class PiBot:
     self.bot_properties.save_property('gender', gender)
     self.bot_properties.save_property('language', language)
     
-    # Plays startup sound if it exists
-    if 'startup_sound.wav' in os.listdir():
-        playsound("C:/Users/David/OneDrive/Desktop/PiBot/startup_sound.wav")
+    # Get the current working directory of the script
+    cwd = os.getcwd()
+
+    # Check if the startup sound file exists in the current directory
+    sound_file = os.path.join(cwd, 'startup_sound.wav')
+    if os.path.isfile(sound_file):
+        # Play the sound
+        playsound(sound_file)
 
   def listen(self) -> str:
     """
